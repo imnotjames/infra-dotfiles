@@ -1,0 +1,32 @@
+---
+# Project definition - Projects should be a "unit" based on clear ownership.
+project:
+  # A unique name of the project
+  name: hello-world
+  # Optional version of the project (bumped via scripts / sugar?)
+  # This could be used for tagging a release of the project in artifactory.
+  version: 0.0.1
+  # Repository under braintreeps?  For inclusion when config is used for
+  # systems outside of git
+  repository: example/hello-world
+  # Team / teams that "owns" this service.
+  # This may be something we could use when creating "implicit" contacts
+  # Either a list or a single record
+  team:
+    - "example"
+  # One or more explicit communication channels for this service
+  contact:
+    - email: "hello-world@example.com"
+      only:
+        - issues
+      # Some hints about when to use it - a string or a regex.
+      # Ideally we'd have some special keys for different events that
+      # might trigger a message such as alerts.
+    - slack: "#example-team
+      only:
+        - issues
+      except:
+        - issues:intake
+    - slack: "#hello-world-alerts"
+      only: alerts
+    - slack: "#hello-world"

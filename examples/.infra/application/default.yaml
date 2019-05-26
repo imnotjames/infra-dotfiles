@@ -1,0 +1,76 @@
+---
+# This is a definition of an application within the project.
+# There may be multiple applications defined, but a good convention
+# is that there's always a "default" application within the project.
+# This enforces a strong convention around namespace, environment naming,
+# and best practices in building an application.
+application:
+  # The "stack" is the basis of the application deployment.
+  # The stack should define initial CI/CD pipelines, helm charts,
+  # and framework dependencies.  It's intendend to get someone up and
+  # running as fast as possible by taking some opinionated shortcuts
+  # through the dev process.
+  stack: python/grpc
+
+  # Add-Ons may include additional deployments, provisioning, or secrets.
+  # They are the "stateful" bits.  Some - like s3 or aurora - would need
+  # to provision through AWS.  Others, like kafka, would need to be a separate
+  # deployment from the application.  Further, we may want to use this for
+  # connecting to services such as pagerduty, Auth0, or other internal
+  # services.
+
+  addons:
+    # Get an S3 bucket added on to this deployment.
+    # This defaults a `name`, `as`, and `options`.
+    # The name would be something like AWS_S3_DEFAULT
+    - "aws/s3"
+    # See https://github.com/awslabs/aws-service-operator/blob/master/models/s3bucket.yaml
+    - type: "aws/s3"
+      as: AWS_S3_OTHER_BUCKET
+      parameters:
+        name: "bucket_name"
+        accessControl: public
+        versioning: false
+        logging:
+          enabled: true
+          prefix: -logs-
+
+    - type: "aws/aurora"
+      as: DATABASE
+      parameters:
+        identifier: "urn:identifier"
+
+    # Connection and credentials for internal team project app
+    - "organization/my-team/awesome-project"
+
+    # A deployment of kafka with whatever sane defaults that have been chosen
+    - kafka
+
+  # Parameters to pass through for all environments
+  parameters:
+    # This is mostly an arbitrary naming scheme that the stack would understand
+    # to be an environment variable
+    env:
+      GRPC_ABORT_ON_LEAKS: false
+
+  # Specific settings for each individual environment
+  # production, canary, development
+  environments:
+    production:
+      # Extra addons specific to the production environment - we want to actually
+      # send push notifications and connect it to our monitoring services
+      addons:
+        # Credentials for connecting to firebase push
+        - "firebase/push-notifications"
+
+        # These should probably be "default" with the "stack" we chose anyway
+        - datadog
+        - sumologic
+        - sentry
+
+      parameters:
+        autoscale: true
+
+    development:
+      parameters:
+        autoscale: false

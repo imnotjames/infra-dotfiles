@@ -1,0 +1,45 @@
+---
+# Based off https://docs.gitlab.com/ee/ci/yaml/
+
+# For now, stages can just be documenting but in the future
+# we could probably run stages in parallel to speed up the pipeline.
+stages:
+  - build
+  - test
+  - deploy
+
+# Name of the job
+build-artifacts:
+  # The stage this belongs to - if no stage is defined then it's
+  # assigned to the "test" stage.
+  stage: build
+  # The docker image to run this job from
+  image: python:2.7
+  script:
+    # Script should be either a string or list of strings which
+    # should be run in this job
+    - make build assets
+    - make build artifacts
+  only:
+    # What should cause this job to trigger
+    # Special keywords should exist for pull requests, post-merge, branches,
+    # tags, or notable special circumstances.
+    - pull-requests
+    # Otherwise, we should apply it as a regex / exact match against
+    # the name of the branch or tag.
+    - master
+    # Omitting an `only` value should have a sensible default.
+    # The default for gitlab is ["tags", "branches"]
+
+# Bare minimum definitions
+test-artifacts:
+  script: make test
+
+test-sonatype-dependencies:
+  image: sonatype-scan:python-dependencies
+
+deploy:
+  stage: deploy
+  image: deploy-artifactory
+  only:
+    - tags

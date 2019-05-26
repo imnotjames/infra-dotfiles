@@ -1,0 +1,7 @@
+---
+# This would be the "opinionated default" if our user
+# doesn't care about configuring it themselves and just
+# want to use the default for a Python 3 uwsgi project.
+include:
+  - project: example/pipelines
+    file: python3/uwsgi/pipeline.yml
