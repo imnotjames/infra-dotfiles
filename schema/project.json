@@ -1,0 +1,145 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Project configuration",
+  "type": "object",
+  "properties": {
+    "project": { "$ref": "#/definitions/project" }
+  },
+  "required": [ "project" ],
+  "definitions": {
+    "project": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 3,
+          "description": "A unique name describing this project."
+        },
+        "version": {
+          "type": "string",
+          "description": "An optional version descriptor of the project. This could be used for tagging a release of the project in artifactory."
+        },
+        "repository": {
+          "type": "string",
+          "description": "Repository under braintreeps. For inclusion when config is used for systems outside of git"
+        },
+        "team": {
+          "$ref": "#/definitions/team_list",
+          "description": "Team name or list of team names that own this project. Should match jira / github team / etc."
+        },
+        "contact": {
+          "$ref": "#/definitions/contact_list",
+          "description": "Contact or list of contacts for this project."
+        }
+      },
+      "required": [ "name" ]
+    },
+    "team_list": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "filter_only_list": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "filter_except_list": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "filter": {
+      "properties": {
+        "only": {
+          "$ref": "#/definitions/filter_only_list"
+        },
+        "except": {
+          "$ref": "#/definitions/filter_except_list"
+        }
+      }
+    },
+    "filter_list": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "contact_channel_slack": {
+      "type": "object",
+      "properties": {
+        "slack": {
+          "type": "string",
+          "description": "The slack channel or username to contact."
+        }
+      },
+      "required": [ "slack" ]
+    },
+    "contact_channel_email": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "The email to contact."
+        }
+      },
+      "required": [ "email" ]
+    },
+    "contact_channel": {
+      "oneOf": [
+        { "$ref": "#/definitions/contact_channel_slack" },
+        { "$ref": "#/definitions/contact_channel_email" }
+      ]
+    },
+    "contact": {
+      "allOf": [
+        { "$ref": "#/definitions/contact_channel" },
+        { "$ref": "#/definitions/filter" }
+      ]
+    },
+    "contact_list": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/contact"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/contact"
+          }
+        }
+      ]
+    }
+  }
+}
