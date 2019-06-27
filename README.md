@@ -7,40 +7,63 @@ Inspired by [the QCon AirBNB slides](https://qconlondon.com/system/files/present
 
 ### CLI
 
-#### infra charts
-
-#### infra deploy
-
-#### infra stacks
-
-#### infra stacks:set STACK
-
-#### infra stacks:config:get STACK CONFIG
- 
-#### infra stacks:config:set STACK CONFIG VALUE
-
-#### infra stacks:config:unset STACK CONFIG
-
-#### infra addons
-
-#### infra addons:attach ADDON
-
-#### infra addons:rename ADDON NEW_NAME
-
-#### infra addons:config:get ADDON CONFIG
-
-#### infra addons:config:set ADDON CONFIG VALUE
-
-#### infra addons:config:unset ADDON CONFIG
-
-#### infra local
-
 #### infra init
+
+Create a new project in the current root.
+
+This creates a project without any applications or any configuration.
 
 #### infra apps
 
-#### infra apps:create APP
+#### infra apps init APP
 
-#### infra apps:destroy APP
+Create an application in the current root and project.
+
+#### infra apps destroy APP
+
+#### infra stacks
+
+#### infra stack set STACK
+
+#### infra stack config
+ 
+#### infra stack config KEY
+
+#### infra stack config KEY VALUE
+
+#### infra stack config --unset KEY
+
+#### infra addons
+
+#### infra addons attach ADDON
+
+#### infra addons detach ADDON
+
+#### infra addons rename ADDON NEW_NAME
+
+#### infra addons config ADDON
+
+#### infra addons config ADDON KEY
+
+#### infra addons config ADDON KEY VALUE
+
+#### infra addons config ADDON --unset KEY
 
 #### infra validate
+
+Validate the current infrastructure configuration.
+
+#### infra export codeowners
+
+Export a Github-Format CODEOWNERS file.
+
+#### infra export charts
+
+Export Kubernetes Charts based on the stacks and addons defined in your application.
+
+#### infra export gitlab-ci
+
+Export a Gitlab CI pipeline for all applications and sub-projects.
+
+#### infra deploy
+ 
