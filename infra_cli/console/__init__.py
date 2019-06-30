@@ -5,6 +5,8 @@ from pkg_resources import get_distribution, DistributionNotFound
 import click
 import click_log
 
+from .commands import export
+
 
 logger = logging.getLogger()
 click_log.basic_config(logger)
@@ -42,6 +44,9 @@ def cli(ctx, root, verbose):
         ctx.obj['ROOT'] = os.getcwd()
 
     logger.setLevel(_get_log_level(verbose))
+
+
+cli.add_command(export)
 
 
 def run():
