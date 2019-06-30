@@ -6,6 +6,7 @@ import click
 import click_log
 
 from .commands import export
+from .commands import init
 
 
 logger = logging.getLogger()
@@ -47,6 +48,7 @@ def cli(ctx, root, verbose):
 
 
 cli.add_command(export)
+cli.add_command(init)
 
 
 def run():
