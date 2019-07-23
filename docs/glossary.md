@@ -12,7 +12,7 @@ up to a specific application.  Each pipeline can have stages defined, and each s
 have multiple jobs to perform.
 
 For more detailed information about the project configuration, see
-[the Project pages](./docs/project/).
+[the Project pages](./reference/project.md).
 
 ### Application
 
@@ -20,7 +20,7 @@ An application is a unit of a project. A project may have multiple applications.
 application is defined as an environment, a stack, and add-ons.
 
 For more detailed information about the application configuration, see
-[the Application pages](./docs/application/).
+[the Application pages](./reference/application.md).
 
 #### Environment
 
@@ -57,7 +57,7 @@ toolchain build steps, or the frameworks involved.
 ### Pipeline
 
 For more detailed information about the pipeline configuration, see 
-[the Pipeline pages](./docs/pipeline/).
+[the Pipeline pages](./reference/pipelineq.md).
 
 #### Stages
 
