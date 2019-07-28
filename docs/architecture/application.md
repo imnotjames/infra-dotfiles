@@ -1,38 +1,48 @@
-
-### Application
-An application is a unit of a project. A project may have multiple applications. An
-application is defined as an environment, a stack, and add-ons.
+# Application
+An application is a unit of a project. A project may have multiple applications.
+An application is defined as an Environment, a Stack, and Add-ons.
 
 For more detailed information about the application configuration, see
-[the Application reference pages](./reference/application.md).
+[the Application reference pages](../reference/application.md).
 
-#### Environment
-An environment is a part of the environment.  Each defined environment is a separate deployment and often does not share resources with any other environment.  By default the environments are Production, Canary, Staging, and Development.
+## Environment
+An environment is a part of the Application.  Each defined environment is a
+separate deployment of the application.  The environments can be thought of
+as a namespace within the application.
 
-This can be overridden in the Project settings.
+Per-environment configuration of the Stack and Add-ons is allowed. For example,
+a Development environment may have debug logs enabled, where a Production
+environment would perform poorly with debug logs being emitted.
 
-#### Stack
-The stack is a required part of the application.  The stack defines a basis which to make
-assumptions from on deploying your application.  The stack utilizes the application's
-parameters to configure itself.
+While it's possible to provision resources to be shared between environments
+this is generally a discouraged practice.  This is dependent on support within
+the Stack and Add-On.
 
-Examples of stacks may be a Django web application, a generic command line cron task, or
-a Java Storm topology.
+The default environments are Production, Canary, Staging, and Development.
 
-The stack may imply a number of other pipelines or add-ons to be enabled as part of it by
-default.  This is dependent on the creator of the stack, the needs of the environment,
-toolchain build steps, or the frameworks involved.
+## Stack
+The stack is a required part of the application.  The stack defines a basis
+which to make assumptions from on deploying your application.  The stack has a
+type, version, and project.  The stack utilizes the application's parameters
+to configure itself.
 
-#### Add-Ons
-An add-on is an optional part of the application.  Add-ons are resources, credentials, or
-connections which an application may use.  In most cases, the add-ons are injected as
-environment variables into the stack.  An add-on uses the add-on's parameters to configure
-itself.
+The stack may imply a number of other pipelines or Add-ons to be enabled as
+part of it by default.  This is dependent on the creator of the stack, the
+needs of the environment, toolchain build steps, or the frameworks involved.
 
-Examples of add-ons may be Amazon Web Services managed databases, Redis instances provisioned
-as a cache, access tokens for Sentry error tracking, or connection parameters for on-premise
-logging infrastructure.
+Examples of stacks may be a Django web application, a generic command line
+cron task, or a Java Storm topology.
 
-An add-on may imply a number of other pipelines or add-ons as part of it by default.  This is
-dependent on the creator of the add-on, the needs of the environment,
-toolchain build steps, or the frameworks involved.
+## Add-Ons
+An Add-on is an optional part of the application.  Add-ons are resources,
+credentials, or connections which an application may use.  In most cases, the
+Add-ons are injected as environment variables into the stack.  An Add-on uses
+the Add-on's parameters to configure itself.
+
+An Add-on may imply a number of other pipelines or Add-ons as part of it by
+default.  This is dependent on the creator of the Add-on, the needs of the
+environment, toolchain build steps, or the frameworks involved.
+
+Examples of Add-ons may be Amazon Web Services managed databases, Redis
+instances provisioned as a cache, access tokens for Sentry error tracking,
+or connection parameters for on-premise logging infrastructure.
