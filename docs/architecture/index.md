@@ -30,14 +30,14 @@ Most of all, `infra` should make your life _easier_.
 
 Term        | Description
 ----------- | -------------------
-Project     |
-Application |
-Environment |
-Stack       |
-Add-Ons     |
-Pipeline    |
-Jobs        |
-Stages      |
+Project     | Base unit in `infra` at the organization level.
+Application | A working unit of a Project at the deployment level.
+Environment | A separate deployment of an application.
+Stack       | A basis which to make assumptions for deploying an application.
+Add-Ons     | A Resource, credential, or connection which an application may use.
+Pipeline    | A set of tasks to test, build, and deploy applications.
+Jobs        | A task in a pipeline.
+Stages      | A set of tasks in a pipeline that may run in parallel.
 
 
 
