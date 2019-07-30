@@ -83,19 +83,6 @@
         }
       }
     },
-    "filter_list": {
-      "oneOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      ]
-    },
     "contact_channel_slack": {
       "type": "object",
       "properties": {
