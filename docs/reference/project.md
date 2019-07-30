@@ -15,16 +15,29 @@ Parameter       | Description
 --------------- | --------------------
 `version`       |
 
-## Parameter Details
+### Parameter Details
 
-### `version`
+#### `version`
 
-### `team`
+#### `owner`
 
-### `contact`
+#### `contact`
 
-### `contact:slack`
+#### `contact:slack`
 
-### `contact:email`
+#### `contact:email`
 
-### `contact:only` and `contact:except`
+#### `contact:only` and `contact:except`
+Substring match or regular expression match of the type of contact.
+
+Special keywords:
+
+Keyword       | Description
+------------- | -----------------------
+`support`     | General Support inquiries.
+`bugs`        | Bug Reports.
+`crashes`     | Crash Logs and other similar Reports
+`alert:high`  | High Severity Alerts, such as "critical" thresholds.
+`alert:low`   | Low Severity Alerts, such as "warning" thresholds.
+`exception`   | Exceptions and Regressions, such as from Sentry.
+`maintenance` | Scheduled Maintenance, such as expected downtime.
