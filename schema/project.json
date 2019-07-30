@@ -23,9 +23,9 @@
           "type": "string",
           "description": "Repository under braintreeps. For inclusion when config is used for systems outside of git"
         },
-        "team": {
-          "$ref": "#/definitions/team_list",
-          "description": "Team name or list of team names that own this project. Should match jira / github team / etc."
+        "owner": {
+          "$ref": "#/definitions/owner_list",
+          "description": "Owner name or list of owner names that own this project. Should match email / jira / github team / etc."
         },
         "contact": {
           "$ref": "#/definitions/contact_list",
@@ -34,7 +34,7 @@
       },
       "required": [ "name" ]
     },
-    "team_list": {
+    "owner_list": {
       "oneOf": [
         {
           "type": "string"
