@@ -37,6 +37,7 @@ Keyword       | Description
 `support`     | General Support inquiries.
 `bugs`        | Bug Reports.
 `crashes`     | Crash Logs and other similar Reports
+`deploy`      | The start, success, or failure of each deploy.
 `alert:high`  | High Severity Alerts, such as "critical" thresholds.
 `alert:low`   | Low Severity Alerts, such as "warning" thresholds.
 `exception`   | Exceptions and Regressions, such as from Sentry.
