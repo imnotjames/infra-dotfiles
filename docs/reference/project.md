@@ -11,9 +11,15 @@ Optionally, you may define version, ownership details, or contact information.
 
 ## Configuration Parameters
 
-Parameter       | Description
---------------- | --------------------
-`version`       |
+Parameter                                          | Description
+-------------------------------------------------- | --------------------
+[`version`](#version)                              |
+[`owner`](#owner)                                  |
+[`contact`](#contact)                              |
+[`contact:slack`](#contactslack)                   |
+[`contact:email`](#contactemail)                   |
+[`contact:only`](#contactonly_and_contactexcept)   |
+[`contact:except`](#contactonly_and_contactexcept) |
 
 ### Parameter Details
 

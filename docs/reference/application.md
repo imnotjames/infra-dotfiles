@@ -4,17 +4,30 @@ The Application manifest is defined within `.infra/application/`.
 The name of the file will define the name of the application.
 
 ### Unavailable names for Environments
-While nearly any string is available as
+While nearly any string is available as an environment, the following may not be used.
 
-* `stack`
-* `addons`
-* `parameters`
 * `environments`
+* `default`
+
+## `default` environment
+Any configuration parameter for the `default` environment is applied on every other
+environment defined in the application.
 
 ## Configuration Parameters
 
-Parameter       | Description
---------------- | --------------------
+Parameter           | Description
+------------------- | --------------------
+`environments`      | 
+`stack`             |
+`stack:type`        |
+`stack:project`     |
+`stack:parameters`  |
+`addons`            |
+`addons:type`       |
+`addons:project`    |
+`addons:alias`      |
+`addons:parameters` |
+`parameters`        |
 
 ## Parameter Details
 

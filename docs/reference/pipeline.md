@@ -6,13 +6,10 @@
 
 ## Unavailable names for Jobs
 
-* `image`
-* `services`
 * `stages`
-* `before_script`,
-* `after_script`
-* `variables`
-* `cache`
+* `default`
+
+## `default` job
 
 ## Configuration Parameters
 
