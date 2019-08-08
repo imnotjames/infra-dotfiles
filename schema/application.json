@@ -9,12 +9,11 @@
     "application": {
       "type": "object",
       "properties": {
-        "stack": { "$ref": "#/definitions/stack" },
-        "addons": { "$ref": "#/definitions/addons" },
-        "parameters": { "$ref": "#/definitions/parameters" },
         "environments": { "$ref": "#/definitions/environments" }
       },
-      "additionalProperties": false
+      "additionalProperties": {
+        "$ref": "#/definitions/environment"
+      }
     },
     "stack": {
       "oneOf": [
@@ -67,18 +66,18 @@
       "type": "object"
     },
     "environments": {
-      "type": "object",
-      "propertyNames": {
-        "enum": [
-          "production",
-          "canary",
-          "development",
-          "loadtest"
-        ]
+      "type": "array",
+      "description": "Defines environments to be generated. Defaults to ['production', 'canary', 'staging'].",
+      "default": [
+        "production",
+        "canary",
+        "staging"
+      ],
+      "items": {
+        "type": "string"
       },
-      "additionalProperties": {
-        "$ref": "#/definitions/environment"
-      }
+      "uniqueItems": true,
+      "minItems": 1
     },
     "environment": {
       "type": "object",
