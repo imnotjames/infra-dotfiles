@@ -22,9 +22,10 @@ See the [installation guide](./docs/installation/) for more information.
 
 ## Documentation
 
+See the [documentation](./docs/index.md) to learn more about the manifest format and decisions behind this project.
 
 
-
+---
 
 
 Inspired by [the QCon AirBNB slides](https://qconlondon.com/system/files/presentation-slides/qcon_london_2019.pdf)
