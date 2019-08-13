@@ -22,10 +22,13 @@ See the [installation guide](./docs/installation/) for more information.
 
 ## Documentation
 
-See the [documentation](./docs/index.md) to learn more about the manifest format and decisions behind this project.
+See the [documentation](./docs/index.md) to learn more about the manifest format,
+deployment mechanisms available, and decisions behind this project.
 
+## Acknowledgements
 
----
+* Melanie Cebula for the fantastic [the QCon AirBNB slides][qcon-airbnb] that inspired this.
+* GitLab CI for [their pipeline documentation][gitlab-ci-yaml] that much of the pipeline definitions are lifted from.
 
-
-Inspired by [the QCon AirBNB slides](https://qconlondon.com/system/files/presentation-slides/qcon_london_2019.pdf)
+[qcon-airbnb]: https://qconlondon.com/system/files/presentation-slides/qcon_london_2019.pdf
+[gitlab-ci-yaml]: https://docs.gitlab.com/ee/ci/yaml/
